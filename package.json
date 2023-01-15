@@ -1,18 +1,16 @@
 {
   "name": "pfinder-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Demo of pathfinding library Pfinder",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Juan Jose Capellan",
+  "license": "MIT",
   "dependencies": {
-    "pfinder": "^0.5.0",
+    "pfinder": "^0.6.0",
     "phaser": "^3.55.2",
     "phaser3-bitmapfont-factory": "^1.1.0"
   },

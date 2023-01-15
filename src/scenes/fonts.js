@@ -13,8 +13,6 @@ export default class Fonts extends Phaser.Scene {
         window.centerX = centerX;
         window.centerY = centerY;
 
-        this.loadedWF = false;
-
         this.progressTxt = this.add.text(centerX, centerY, 'Progress', { color: '#555568' }).setOrigin(0.5);
 
         this.generateBitmapFonts();
@@ -23,7 +21,8 @@ export default class Fonts extends Phaser.Scene {
 
     generateBitmapFonts() {
 
-        const chars = ' NPCs=0123456789 ';
+        const chars = 'abcdefghijklmnopqrstuvwxyzMTRUCIOSNPDLKA.-=0123456789() ';
+        const chars2 = 'github';
 
         const onComplete = () => {
             this.scene.start('load');
@@ -34,7 +33,8 @@ export default class Fonts extends Phaser.Scene {
         };
 
         const bmff = new BMFFactory(this, onComplete, options);
-        bmff.make('font', bmff.defaultFonts.sansSerif, chars, { fontSize: '48px', color: '#ff0000' }, true);
+        bmff.make('font', bmff.defaultFonts.sansSerif, chars, { fontSize: '48px', color: '#555568' }, true);
+        bmff.make('link', bmff.defaultFonts.sansSerif, chars2, { fontSize: '48px', color: '#111198' }, true);
 
         bmff.exec();
     }

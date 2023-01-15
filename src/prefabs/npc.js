@@ -9,9 +9,8 @@ class Npc extends Walker {
 
     check() {
         if (!this.isFollowing()) {
-            let x1 = Phaser.Math.Between(0, this.grid[0].length - 1);//Math.floor(Math.random() * (this.grid[0].length - 1));
-            let y1 = Phaser.Math.Between(0, this.grid.length - 1); //Math.floor(Math.random() * (this.grid.length - 1));
-            //console.log(x1,y1);
+            let x1 = Phaser.Math.Between(0, this.grid[0].length - 1);
+            let y1 = Phaser.Math.Between(0, this.grid.length - 1);
             this.pathTo(x1 * this.tileSize, y1 * this.tileSize);
         }
     }

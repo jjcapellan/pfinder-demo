@@ -29,6 +29,7 @@ class Walker extends Phaser.GameObjects.PathFollower {
 
     generatePath(x0, y0, x1, y1) {
 
+        // points = [{x: x0, y: y0}, ... , {x: x1, y:y 1}]
         let points = pf.getPath(this.grid, x0, y0, x1, y1);
         if(!points){
             return null;
