@@ -21,7 +21,7 @@ class Walker extends Phaser.GameObjects.PathFollower {
         this.y = this.getPoint(y0);
         let p = this.generatePath(x0, y0, x1, y1);
         if(!p)return;
-        this.setPath(this.generatePath(x0, y0, x1, y1));
+        this.setPath(p);
         if (this.path) {
             this.startFollow(this.speed * this.pathLength);
         }
