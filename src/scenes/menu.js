@@ -12,7 +12,7 @@ export default class Menu extends Phaser.Scene {
         const margin = 18;
         let github = false;
 
-        this.add.bitmapText(cx, margin, 'font', 'Demo Pfinder v0.6.0', 20)
+        this.add.bitmapText(cx, margin, 'font', 'Demo Pfinder v0.7.0', 20)
             .setOrigin(0.5, 0);
 
         this.add.bitmapText(cx, h / 5, 'font', '-- INSTRUCTIONS --', 28)

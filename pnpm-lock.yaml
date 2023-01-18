@@ -2,12 +2,12 @@ lockfileVersion: 5.4
 
 specifiers:
   esbuild: ^0.16.14
-  pfinder: ^0.6.0
+  pfinder: ^0.7.0
   phaser: ^3.55.2
   phaser3-bitmapfont-factory: ^1.1.0
 
 dependencies:
-  pfinder: 0.6.0
+  pfinder: 0.7.0
   phaser: 3.55.2
   phaser3-bitmapfont-factory: 1.1.0
 
@@ -259,8 +259,8 @@ packages:
       util: 0.10.4
     dev: false
 
-  /pfinder/0.6.0:
-    resolution: {integrity: sha512-M8QoIve7bFd384HOMLWaYK47WwlGMTYcyntGHnJyfZkqjuD+KI/QyG9qgS/T4iMbeS5O/hfoyeM+7C2oL0sZMA==}
+  /pfinder/0.7.0:
+    resolution: {integrity: sha512-zIgtH98cXCpjKB1TSfeSow3vOrdaAnk6Yty+pCZI7jhGFYJndwwRKspvycPQZ0sdWfb1seaoS7q61k6w6gk7bQ==}
     dev: false
 
   /phaser/3.55.2:
