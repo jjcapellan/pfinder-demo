@@ -56,7 +56,7 @@ export default class Main extends Phaser.Scene {
                 return;
             }
 
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 50; i++) {
                 let npc = this.add.existing(new Npc(this, x, y, grid, TILESIZE, Phaser.Math.Between(MIN_SPEED, MAX_SPEED)));
                 this.npcs.push(npc);
             }
