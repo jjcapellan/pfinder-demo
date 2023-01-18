@@ -27,10 +27,11 @@ export default class Load extends Phaser.Scene {
 
     generateMap(width, height) {
         const map = [];
+        Phaser.Math.RND.init('abcabc');
         for (let y = 0; y < height; y++) {
             let row = new Array(width).fill(0);
             row.forEach((_, x) => {
-                row[x] = Math.random() > 0.7 ? 1 : 0;
+                row[x] = Phaser.Math.Between(0,10) > 7 ? 1 : 0;
             });
             map.push(row);
         }
