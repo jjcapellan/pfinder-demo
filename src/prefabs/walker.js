@@ -17,8 +17,8 @@ export default class Walker extends Phaser.GameObjects.PathFollower {
     }
 
     pathTo(x1, y1) {
-        let x0 = this.getCell(this.x);
-        let y0 = this.getCell(this.y);
+        let x0 = this.pointToCell(this.x);
+        let y0 = this.pointToCell(this.y);
 
         let p = this.generatePath(x0, y0, x1, y1);
         if (!p) return;
@@ -49,11 +49,11 @@ export default class Walker extends Phaser.GameObjects.PathFollower {
         return path;
     }
 
-    getCell(pointIndex) {
+    pointToCell(pointIndex) {
         return Math.floor(pointIndex / this.tileSize);
     }
 
-    getPoint(cellIndex) {
+    cellToPoint(cellIndex) {
         return (cellIndex + 0.5) * this.tileSize;
     }
 }
