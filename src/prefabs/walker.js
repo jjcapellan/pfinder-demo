@@ -13,7 +13,7 @@ export default class Walker extends Phaser.GameObjects.PathFollower {
         this.tileSize = tileSize;
         this.grid = grid;
         this.pathLength = 0;
-        this.speed = speed;
+        this.speed = speed; // time elapsed from point to point
     }
 
     pathTo(x1, y1) {
