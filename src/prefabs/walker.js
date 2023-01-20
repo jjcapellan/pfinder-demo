@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import * as pf from 'pfinder';
 
-class Walker extends Phaser.GameObjects.PathFollower {
+export default class Walker extends Phaser.GameObjects.PathFollower {
     constructor(scene, x, y, grid, tileSize, speed) {
         let p = new Phaser.Curves.Path(x, y).lineTo(x, y);
         super(scene, p, x, y, 'walkertexture');
