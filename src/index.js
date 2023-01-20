@@ -19,6 +19,7 @@ function runGame() {
             autoCenter: Phaser.Scale.CENTER_BOTH
         },
         roundPixels: true,
+        seed: [12345678],
         scene: [Fonts, Load, Menu, Main]
     };
 
