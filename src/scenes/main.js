@@ -45,10 +45,6 @@ export default class Main extends Phaser.Scene {
             let x0 = Math.floor(pointer.worldX / TILESIZE);
             let y0 = Math.floor(pointer.worldY / TILESIZE);
 
-            // Player coordinates (snaps raw (x,y) to cell grid center)
-            let x = (x0 + 0.5) * TILESIZE;
-            let y = (y0 + 0.5) * TILESIZE;
-
             // If grid cell is a wall ...
             if (!grid[y0][x0]) {
                 return;
@@ -59,13 +55,13 @@ export default class Main extends Phaser.Scene {
             if (!this.existsWalker && !rb) {
                 walker = this.add.existing(
                     // Custom Phaser.GameObjects.PathFollower
-                    new Walker(this, x, y, grid, TILESIZE, SPEED));
+                    new Walker(this, x0, y0, grid, TILESIZE, SPEED));
                 this.existsWalker = true;
                 return;
             }
 
             if (!rb) {
-                walker.pathTo(x, y);
+                walker.pathTo(x0, y0);
                 return;
             }
 
