@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { TILESIZE } from '../constants.js';
+import { TILESIZE, COLOR_BACKGROUND, COLOR_FOREGROUND, COLOR_NPC, COLOR_PLAYER } from '../constants.js';
 
 let count = 0;
 
@@ -19,9 +19,9 @@ export default class Load extends Phaser.Scene {
             if (count == items) this.scene.start('menu');
         });
         this.generateMap(mapWidth, mapHeight);
-        this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'walkertexture', 0xdd1111); // player
-        this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'npctexture', 0x11dd11); // npc
-        this.generateRectTexture(4, 4, 'backtexture', 0xe9efec); // text background
+        this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'walkertexture', COLOR_PLAYER); // player
+        this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'npctexture', COLOR_NPC); // npc
+        this.generateRectTexture(4, 4, 'backtexture', COLOR_BACKGROUND); // text background
 
     }
 
@@ -30,13 +30,13 @@ export default class Load extends Phaser.Scene {
         for (let y = 0; y < height; y++) {
             let row = new Array(width).fill(0);
             row.forEach((_, x) => {
-                row[x] = Phaser.Math.RND.between(0,10) > 7 ? 1 : 0;
+                row[x] = Phaser.Math.RND.between(0, 10) > 7 ? 1 : 0;
             });
             map.push(row);
         }
 
         let graphics = this.add.graphics();
-        graphics.fillStyle(0x555568, 1);
+        graphics.fillStyle(COLOR_FOREGROUND, 1);
         for (let y = 0; y < height; y++) {
             let row = map[y];
             row.forEach((_, x) => {

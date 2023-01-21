@@ -3,6 +3,7 @@ import Fonts from "./scenes/fonts.js";
 import Load from "./scenes/load.js";
 import Main from "./scenes/main.js";
 import Menu from "./scenes/menu.js";
+import Result from "./scenes/benchresult.js";
 import { TILESIZE } from './constants.js';
 
 function runGame() {
@@ -20,7 +21,7 @@ function runGame() {
         },
         roundPixels: true,
         seed: [12345678],
-        scene: [Fonts, Load, Menu, Main]
+        scene: [Fonts, Load, Menu, Main, Result]
     };
 
     new Phaser.Game(config);

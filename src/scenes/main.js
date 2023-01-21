@@ -12,8 +12,10 @@ export default class Main extends Phaser.Scene {
 
     create() {
         // makeGrid converts 2d array of 0s and 1s to one used by the pathfinding algorithm
-        const grid = pf.makeGrid(window.rawmap);
-        window.rawmap = null;
+        this.grid = pf.makeGrid(window.rawmap);
+        const grid = this.grid;
+
+        let targetFps = 0;
 
         // Player
         this.existsWalker = false;
@@ -22,8 +24,10 @@ export default class Main extends Phaser.Scene {
         // Npcs
         this.npcs = [];
 
-        // Images and text
+        // Map texture
         this.add.image(0, 0, 'maptexture').setOrigin(0, 0);
+
+        // Info display
         this.add.image(0, this.game.config.height, 'backtexture')
             .setDisplaySize(160, 60)
             .setOrigin(0, 1);
@@ -32,53 +36,81 @@ export default class Main extends Phaser.Scene {
         this.npcText = this.add.bitmapText(0, this.game.config.height, 'font', 'NPCs = 0', 24)
             .setOrigin(0, 1);
 
-        
-        let blitter = this.add.blitter(0, 0, 'npctexture');
+
+        this.blitter = this.add.blitter(0, 0, 'npctexture');
 
 
-        // Mouse input setup
-        this.input.mouse.disableContextMenu();        
-        this.input.on('pointerdown', (pointer) => {
-            pointer.event.preventDefault();
+        if (!window.benchmark) {
+            // Mouse input setup
+            this.input.mouse.disableContextMenu();
+            this.input.on('pointerdown', (pointer) => {
+                pointer.event.preventDefault();
 
-            // Grid cell coordinates
-            let x0 = Math.floor(pointer.worldX / TILESIZE);
-            let y0 = Math.floor(pointer.worldY / TILESIZE);
+                // Grid cell coordinates
+                let x0 = Math.floor(pointer.worldX / TILESIZE);
+                let y0 = Math.floor(pointer.worldY / TILESIZE);
 
-            // If grid cell is a wall ...
-            if (!grid[y0][x0]) {
-                return;
-            }
+                // If grid cell is a wall ...
+                if (!grid[y0][x0]) {
+                    return;
+                }
 
-            const rb = pointer.rightButtonDown();
+                const rb = pointer.rightButtonDown();
 
-            if (!this.existsWalker && !rb) {
-                walker = this.add.existing(
-                    // Custom Phaser.GameObjects.PathFollower
-                    new Walker(this, x0, y0, grid, TILESIZE, SPEED));
-                this.existsWalker = true;
-                return;
-            }
+                if (!this.existsWalker && !rb) {
+                    walker = this.add.existing(
+                        // Custom Phaser.GameObjects.PathFollower
+                        new Walker(this, x0, y0, grid, TILESIZE, SPEED));
+                    this.existsWalker = true;
+                    return;
+                }
 
-            if (!rb) {
-                walker.pathTo(x0, y0);
-                return;
-            }
+                if (!rb) {
+                    walker.pathTo(x0, y0);
+                    return;
+                }
 
-            for (let i = 0; i < 50; i++) {
-                let speed = Phaser.Math.FloatBetween(MAX_SPEED, MIN_SPEED);
-                let npc = this.add.existing(
-                    // Custom Phaser.GameObjects.Bob
-                    new Npc( blitter, x0, y0, speed, grid, TILESIZE));
-                this.npcs.push(npc);
+                this.spawnNPCs(x0, y0, 50);
+                this.npcText.setText('NPCs = ' + this.npcs.length);
 
-                // blitter object manages rendering of Bob objects
-                blitter.children.addAt(npc, blitter.children.length, false);
-                blitter.dirty = true;
-            }
-            this.npcText.setText('NPCs = ' + this.npcs.length);
+            });
+        }
 
-        });
+        if (window.benchmark) {
+            // Timer events
+            this.time.addEvent({ delay: 1000, callback: () => { targetFps = Math.floor(this.game.loop.actualFps); } });
+            this.time.addEvent(
+                {
+                    startAt: 1100,
+                    delay: 1000,
+                    loop: true,
+                    callback: () => {
+                        
+                        if (this.game.loop.actualFps < targetFps - 2) {
+                            window.resultStr = `MAP${grid[0].length}x${grid.length}  |  ${this.npcs.length} NPCs`;
+                            this.scene.start('result');
+                        }
+
+                        this.spawnNPCs(21, 16, 100);
+                        this.npcText.setText('NPCs = ' + this.npcs.length);
+                    }
+                }
+            );
+        }
+    }
+
+    spawnNPCs(x0, y0, n) {
+        for (let i = 0; i < n; i++) {
+            let speed = Phaser.Math.FloatBetween(MAX_SPEED, MIN_SPEED);
+            let npc = this.add.existing(
+                // Custom Phaser.GameObjects.Bob
+                new Npc(this.blitter, x0, y0, speed, this.grid, TILESIZE));
+            this.npcs.push(npc);
+
+            // blitter object manages rendering of Bob objects
+            this.blitter.children.addAt(npc, this.blitter.children.length, false);
+            this.blitter.dirty = true;
+        }
     }
 
     update(_, dt) {

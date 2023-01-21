@@ -21,8 +21,24 @@ export default class Menu extends Phaser.Scene {
             .setOrigin(0.5, 0);
         this.add.bitmapText(cx, h / 5 + 2 * (margin + 28), 'font', 'Press right mouse button to spawn NPCs (green squares)', 24)
             .setOrigin(0.5, 0);
-        this.add.bitmapText(cx, h / 5 + 4 * (margin + 28), 'font', 'CLICK TO START', 24)
-            .setOrigin(0.5, 0);
+        /*this.add.bitmapText(cx, h / 5 + 4 * (margin + 28), 'font', 'CLICK TO START', 24)
+            .setOrigin(0.5, 0);*/
+
+            this.add.bitmapText(cx -cx/4, h / 5 + 5 * (margin + 28), 'font', 'CLICK TO START\n(benchmark mode)', 24)
+            .setOrigin(0.5, 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                window.benchmark = true;
+                this.scene.start('main');
+            });
+        
+        this.add.bitmapText(cx + cx/4, h / 5 + 5 * (margin + 28), 'font', 'CLICK TO START\n   (normal Mode)', 24)
+            .setOrigin(0.5, 0)
+            .setInteractive()
+            .on('pointerdown', () => {
+                window.benchmark = false;
+                this.scene.start('main');
+            });
 
         this.add.bitmapText(cx, h - (margin + 28), 'link', 'github', 24)
             .setOrigin(0.5, 0)
