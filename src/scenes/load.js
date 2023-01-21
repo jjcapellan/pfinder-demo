@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { TILESIZE, COLOR_BACKGROUND, COLOR_FOREGROUND, COLOR_NPC, COLOR_PLAYER } from '../constants.js';
+import { map137x76 } from '../prefabs/map.js';
 
 let count = 0;
 
@@ -26,14 +27,7 @@ export default class Load extends Phaser.Scene {
     }
 
     generateMap(width, height) {
-        const map = [];
-        for (let y = 0; y < height; y++) {
-            let row = new Array(width).fill(0);
-            row.forEach((_, x) => {
-                row[x] = Phaser.Math.RND.between(0, 10) > 7 ? 1 : 0;
-            });
-            map.push(row);
-        }
+        const map = map137x76;
 
         let graphics = this.add.graphics();
         graphics.fillStyle(COLOR_FOREGROUND, 1);
@@ -44,7 +38,6 @@ export default class Load extends Phaser.Scene {
             });
         }
         graphics.generateTexture('maptexture', width * TILESIZE, height * TILESIZE);
-        window.rawmap = map;
 
     }
 

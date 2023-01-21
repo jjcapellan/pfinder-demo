@@ -1,8 +1,10 @@
 import Phaser from 'phaser';
 import * as pf from 'pfinder';
 import { TILESIZE, SPEED, MIN_SPEED, MAX_SPEED } from '../constants.js';
+import { map137x76 } from '../prefabs/map.js';
 import Walker from '../prefabs/walker.js';
 import Npc from '../prefabs/npc.js';
+
 
 
 export default class Main extends Phaser.Scene {
@@ -12,7 +14,7 @@ export default class Main extends Phaser.Scene {
 
     create() {
         // makeGrid converts 2d array of 0s and 1s to one used by the pathfinding algorithm
-        this.grid = pf.makeGrid(window.rawmap);
+        this.grid = pf.makeGrid(map137x76);
         const grid = this.grid;
 
         let targetFps = 0;
@@ -23,6 +25,8 @@ export default class Main extends Phaser.Scene {
 
         // Npcs
         this.npcs = [];
+        const spawnPoints = [64, 37, 23, 40, 32, 54, 106, 50, 100, 27, 112, 5, 51, 8, 12, 12, 11, 46, 117, 57];
+        let spwIdx = 0;
 
         // Map texture
         this.add.image(0, 0, 'maptexture').setOrigin(0, 0);
@@ -54,6 +58,7 @@ export default class Main extends Phaser.Scene {
                 if (!grid[y0][x0]) {
                     return;
                 }
+                console.log(x0, y0);
 
                 const rb = pointer.rightButtonDown();
 
@@ -85,13 +90,15 @@ export default class Main extends Phaser.Scene {
                     delay: 1000,
                     loop: true,
                     callback: () => {
-                        
+
                         if (this.game.loop.actualFps < targetFps - 2) {
                             window.resultStr = `MAP${grid[0].length}x${grid.length}  |  ${this.npcs.length} NPCs`;
                             this.scene.start('result');
                         }
 
-                        this.spawnNPCs(21, 16, 100);
+                        this.spawnNPCs(spawnPoints[spwIdx], spawnPoints[spwIdx + 1], 100);
+                        spwIdx += 2;
+                        if (spwIdx >= spawnPoints.length) spwIdx = 0;
                         this.npcText.setText('NPCs = ' + this.npcs.length);
                     }
                 }
