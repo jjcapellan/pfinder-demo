@@ -1,14 +1,16 @@
 import Phaser from 'phaser';
-import Fonts from "./scenes/fonts.js";
-import Load from "./scenes/load.js";
-import Main from "./scenes/main.js";
-import Menu from "./scenes/menu.js";
-import Result from "./scenes/benchresult.js";
+import Fonts from './scenes/fonts.js';
+import Load from './scenes/load.js';
+import Main from './scenes/main.js';
+import Menu from './scenes/menu.js';
+import Result from './scenes/benchresult.js';
+import { map137x76 } from './prefabs/map.js';
 import { TILESIZE } from './constants.js';
 
 function runGame() {
-    let width = Math.floor((window.innerWidth - 20) - (window.innerWidth - 20) % TILESIZE);
-    let height = Math.floor((window.innerHeight - 20) - (window.innerHeight - 20) % TILESIZE);
+
+    const width = map137x76[0].length * TILESIZE;
+    const height = map137x76.length * TILESIZE;
 
     var config = {
         type: Phaser.AUTO,
@@ -16,9 +18,6 @@ function runGame() {
         height: height,
         parent: 'game',
         backgroundColor: 0xe9efec,
-        scale: {
-            autoCenter: Phaser.Scale.CENTER_BOTH
-        },
         roundPixels: true,
         seed: [12345678],
         scene: [Fonts, Load, Menu, Main, Result]
