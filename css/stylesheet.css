@@ -6,16 +6,54 @@
 body {
     height: 100%;
     background-color: #e9efec;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#game{
+h1 {
+    margin-top: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+#box {
+    /*display: flex*/
+    display: flex;
+    background-color: #e9efec;
+    color: #555568;
     position: absolute;
     left:0;
     top:0;
     right: 0;
     bottom: 0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#center-box{
+    display:flex;
+    flex-direction: row;
+    width: 800px;
+}
+
+#game{
     display: flex;
+    position: absolute;
+    left:0;
+    top:0;
+    right: 0;
+    bottom: 0;    
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.side-box {
+    width:49%;
+    padding: 10px;
+    cursor: pointer;
 }

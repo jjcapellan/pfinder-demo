@@ -12,6 +12,10 @@ export default class Result extends Phaser.Scene {
         this.add.text(window.centerX, window.centerY, window.resultStr, { fontFamily: 'Arial', fontSize: 32, color: '#dd1111' })
             .setOrigin(0.5);
 
-        this.input.on('pointerup', () => this.scene.start('menu'));
+        this.input.on('pointerup', () => {
+            document.getElementById('box').style.display = 'flex';
+            this.scene.start('menu');
+        }
+        );
     }
 }
