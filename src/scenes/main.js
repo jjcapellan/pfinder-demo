@@ -82,7 +82,7 @@ export default class Main extends Phaser.Scene {
             this.time.addEvent(
                 {
                     startAt: 1100,
-                    delay: 500,
+                    delay: 250,
                     loop: true,
                     callback: () => {
 
