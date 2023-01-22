@@ -25,20 +25,15 @@ export default class Main extends Phaser.Scene {
 
         // Npcs
         this.npcs = [];
-        const spawnPoints = [64, 37, 23, 40, 32, 54, 106, 50, 100, 27, 112, 5, 51, 8, 12, 12, 11, 46, 117, 57];
+        const spawnPoints = [68, 32, 23, 40, 32, 54, 106, 50, 100, 27, 112, 5, 51, 8, 12, 12, 11, 46, 117, 57];
         let spwIdx = 0;
 
         // Map texture
         this.add.image(0, 0, 'maptexture').setOrigin(0, 0);
 
         // Info display
-        this.add.image(0, this.game.config.height, 'backtexture')
-            .setDisplaySize(160, 60)
-            .setOrigin(0, 1);
-        this.add.bitmapText(0, this.game.config.height - 36, 'font', `MAP${grid[0].length}x${grid.length}`, 24)
-            .setOrigin(0, 1);
-        this.npcText = this.add.bitmapText(0, this.game.config.height, 'font', 'NPCs = 0', 24)
-            .setOrigin(0, 1);
+        this.npcText = this.add.bitmapText((68 + 0.5) * TILESIZE, (36 + 0.5) * TILESIZE, 'font', '0', 20)
+            .setOrigin(0.5);
 
 
         this.blitter = this.add.blitter(0, 0, 'npctexture');
@@ -76,7 +71,7 @@ export default class Main extends Phaser.Scene {
                 }
 
                 this.spawnNPCs(x0, y0, 50);
-                this.npcText.setText('NPCs = ' + this.npcs.length);
+                this.npcText.setText(this.npcs.length);
 
             });
         }
@@ -87,7 +82,7 @@ export default class Main extends Phaser.Scene {
             this.time.addEvent(
                 {
                     startAt: 1100,
-                    delay: 1000,
+                    delay: 500,
                     loop: true,
                     callback: () => {
 
@@ -99,7 +94,7 @@ export default class Main extends Phaser.Scene {
                         this.spawnNPCs(spawnPoints[spwIdx], spawnPoints[spwIdx + 1], 100);
                         spwIdx += 2;
                         if (spwIdx >= spawnPoints.length) spwIdx = 0;
-                        this.npcText.setText('NPCs = ' + this.npcs.length);
+                        this.npcText.setText(this.npcs.length);
                     }
                 }
             );

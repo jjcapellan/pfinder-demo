@@ -17,7 +17,7 @@ export default class Load extends Phaser.Scene {
             count++;
             if (count == items) this.scene.start('menu');
         });
-        
+
         this.generateMap();
         this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'walkertexture', COLOR_PLAYER); // player
         this.generateRectTexture(TILESIZE / 2, TILESIZE / 2, 'npctexture', COLOR_NPC); // npc
@@ -27,6 +27,13 @@ export default class Load extends Phaser.Scene {
 
     generateMap() {
         const map = map137x76;
+
+        for (let i = 35; i <= 37; i++) {
+            let row = map[i];
+            for (let j = 63; j <= 73; j++) {
+                row[j] = 1;
+            }
+        }
 
         let graphics = this.add.graphics();
         graphics.fillStyle(COLOR_FOREGROUND, 1);
