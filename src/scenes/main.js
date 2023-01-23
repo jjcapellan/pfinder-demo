@@ -17,6 +17,9 @@ export default class Main extends Phaser.Scene {
         this.grid = pf.makeGrid(map137x76);
         const grid = this.grid;
 
+        // Resets random number generator. Adds consistency to benchmark results.
+        Phaser.Math.RND.init(['abcdabcd']);
+
         let targetFps = 0;
 
         // Player
