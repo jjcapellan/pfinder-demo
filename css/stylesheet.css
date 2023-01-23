@@ -7,6 +7,7 @@ body {
     height: 100%;
     background-color: #e9efec;
     font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
 }
 
 h1 {
