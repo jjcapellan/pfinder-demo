@@ -87,7 +87,7 @@ export default class Main extends Phaser.Scene {
                     callback: () => {
 
                         if (this.game.loop.actualFps < targetFps - 2) {
-                            window.resultStr = `MAP${grid[0].length}x${grid.length}  |  ${this.npcs.length} NPCs`;
+                            window.resultStr = `${this.npcs.length} NPCs`;
                             this.scene.start('result');
                         }
 
