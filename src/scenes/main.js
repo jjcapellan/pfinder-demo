@@ -94,7 +94,7 @@ export default class Main extends Phaser.Scene {
                             this.scene.start('result');
                         }
 
-                        this.spawnNPCs(spawnPoints[spwIdx], spawnPoints[spwIdx + 1], 100);
+                        this.spawnNPCs(spawnPoints[spwIdx], spawnPoints[spwIdx + 1], 200);
                         spwIdx += 2;
                         if (spwIdx >= spawnPoints.length) spwIdx = 0;
                         this.npcText.setText(this.npcs.length);
