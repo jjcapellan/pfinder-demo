@@ -3,12 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   esbuild: ^0.16.14
   pfinder: ^0.7.0
-  phaser: ^3.55.2
+  phaser: 3.87.0
   phaser3-bitmapfont-factory: ^1.1.0
 
 dependencies:
   pfinder: 0.7.0
-  phaser: 3.55.2
+  phaser: 3.87.0
   phaser3-bitmapfont-factory: 1.1.0
 
 devDependencies:
@@ -244,43 +244,20 @@ packages:
       '@esbuild/win32-x64': 0.16.14
     dev: true
 
-  /eventemitter3/4.0.7:
-    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
-    dev: false
-
-  /inherits/2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
-    dev: false
-
-  /path/0.12.7:
-    resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==}
-    dependencies:
-      process: 0.11.10
-      util: 0.10.4
+  /eventemitter3/5.0.1:
+    resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
     dev: false
 
   /pfinder/0.7.0:
     resolution: {integrity: sha512-zIgtH98cXCpjKB1TSfeSow3vOrdaAnk6Yty+pCZI7jhGFYJndwwRKspvycPQZ0sdWfb1seaoS7q61k6w6gk7bQ==}
     dev: false
 
-  /phaser/3.55.2:
-    resolution: {integrity: sha512-amKXsbb2Ht29dGPKvt1edq3yGGYKtq8373GpJYGKPNPnneYY6MtVTOgjHDuZwtmUyK4v86FugkT3hzW/N4tjxQ==}
+  /phaser/3.87.0:
+    resolution: {integrity: sha512-AyI1b3T5fp05gzf6WUmu2FNqaZL+Y7w88yBRLf7YZXF9bncUSHpnDrupnTGoPqy/RKHRLBcay7zWeqQ2wiMWcw==}
     dependencies:
-      eventemitter3: 4.0.7
-      path: 0.12.7
+      eventemitter3: 5.0.1
     dev: false
 
   /phaser3-bitmapfont-factory/1.1.0:
     resolution: {integrity: sha512-PnJsX4yWh99XdF+dhzo4aPsyJP2tA+ZWMakTdXpIn1l/yWD/JgXC1G3AFcy2+lK/mQnVbLScMPVJum7lKjLhvQ==}
-    dev: false
-
-  /process/0.11.10:
-    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
-    engines: {node: '>= 0.6.0'}
-    dev: false
-
-  /util/0.10.4:
-    resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
-    dependencies:
-      inherits: 2.0.3
     dev: false
