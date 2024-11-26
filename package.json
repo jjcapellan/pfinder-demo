@@ -12,7 +12,7 @@
   "dependencies": {
     "pfinder": "^0.7.0",
     "phaser": "3.87.0",
-    "phaser3-bitmapfont-factory": "^1.1.0"
+    "phaser3-bitmapfont-factory": "2.1.0"
   },
   "devDependencies": {
     "esbuild": "^0.16.14"

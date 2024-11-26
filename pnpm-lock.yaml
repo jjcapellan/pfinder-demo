@@ -4,12 +4,12 @@ specifiers:
   esbuild: ^0.16.14
   pfinder: ^0.7.0
   phaser: 3.87.0
-  phaser3-bitmapfont-factory: ^1.1.0
+  phaser3-bitmapfont-factory: 2.1.0
 
 dependencies:
   pfinder: 0.7.0
   phaser: 3.87.0
-  phaser3-bitmapfont-factory: 1.1.0
+  phaser3-bitmapfont-factory: 2.1.0
 
 devDependencies:
   esbuild: 0.16.14
@@ -258,6 +258,6 @@ packages:
       eventemitter3: 5.0.1
     dev: false
 
-  /phaser3-bitmapfont-factory/1.1.0:
-    resolution: {integrity: sha512-PnJsX4yWh99XdF+dhzo4aPsyJP2tA+ZWMakTdXpIn1l/yWD/JgXC1G3AFcy2+lK/mQnVbLScMPVJum7lKjLhvQ==}
+  /phaser3-bitmapfont-factory/2.1.0:
+    resolution: {integrity: sha512-oLueLA0fc7N9jEJq1Db8aMrdXIK2F3ICQLIrp2NhhdBS+5NIM7NvAwm7E1kEd5lVlwzzhb/DvLsEtPMTliqWcA==}
     dev: false
