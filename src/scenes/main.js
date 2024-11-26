@@ -35,7 +35,7 @@ export default class Main extends Phaser.Scene {
         this.add.image(0, 0, 'maptexture').setOrigin(0, 0);
 
         // Info display
-        this.npcText = this.add.bitmapText((68 + 0.5) * TILESIZE, (36 + 0.5) * TILESIZE, 'font', '0', 20)
+        this.npcText = this.add.bitmapText((68 + 0.5) * TILESIZE, (36 + 0.2) * TILESIZE, 'font', '0')
             .setOrigin(0.5);
 
 

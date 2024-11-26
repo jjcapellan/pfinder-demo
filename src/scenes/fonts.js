@@ -32,7 +32,7 @@ export default class Fonts extends Phaser.Scene {
         };
 
         const bmff = new BMFFactory(this, onComplete, options);
-        bmff.make('font', bmff.defaultFonts.sansSerif, chars, { fontSize: '48px', color: '#e9efec' }, true);
+        bmff.make('font', bmff.defaultFonts.sansSerif, chars, { fontSize: '24px', color: '#e9efec' }, true);
 
         bmff.exec();
     }
